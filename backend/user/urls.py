@@ -13,3 +13,5 @@ urlpatterns = [
          user_verified_check, name="verification-check"),
     path('check-username/<str:username>', username_check, name="username-check")
 ]
+
+# verification email
