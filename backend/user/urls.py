@@ -1,4 +1,3 @@
-from django.contrib.admin.decorators import register
 from django.urls import path
 
 from .views import *
