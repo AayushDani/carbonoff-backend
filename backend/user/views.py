@@ -8,7 +8,7 @@ from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
 from .models import UserInformation
 
-from .serializers import LoginSerializer, RegistrationSerialize, ProfileSerializer
+from .serializers import LoginSerializer, RegistrationSerializer, ProfileSerializer
 
 
 @api_view(['POST', ])
