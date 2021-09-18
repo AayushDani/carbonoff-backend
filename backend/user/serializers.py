@@ -78,3 +78,47 @@ class RegistrationSerializer(serializers.ModelSerializer):
         user_information.save()
 
         return user
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+
+    token = serializers.CharField(required=True, max_length=128)
+    first_name = serializers.CharField(required=True, max_length=128)
+    last_name = serializers.CharField(required=True, max_length=128)
+    email = serializers.EmailField(required=True)
+    username = serializers.CharField(required=True, max_length=128)
+    country = serializers.CharField(required=True, max_length=128)
+    state = serializers.CharField(required=True, max_length=128)
+    city = serializers.CharField(required=True, max_length=128)
+
+    class Meta:
+        model = User
+        fields = ['token', 'first_name', 'last_name',
+                  'email', 'username', 'country', 'state', 'city']
+
+    def save(self):
+
+        token = self.validated_data['token']
+        first_name = self.validated_data['first_name']
+        last_name = self.validated_data['last_name']
+        email = self.validated_data['email']
+        username = self.validated_data['username']
+        country = self.validated_data['country']
+        state = self.validated_data['state']
+        city = self.validated_data['city']
+
+        user = Token.objects.get(key=token).user
+        user_information = UserInformation.objects.get(user=user)
+
+        user.first_name = first_name
+        user.last_name = last_name
+        user.email = email
+        user.username = username
+        user_information.country = country
+        user_information.state = state
+        user_information.city = city
+
+        user.save()
+        user_information.save()
+
+        return user
