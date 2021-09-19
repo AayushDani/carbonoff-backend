@@ -5,8 +5,9 @@ from django.contrib.auth.models import User
 
 class CarbonFootprint(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    carbon_footprint = models.IntegerField(blank=False, null=False)
+    footprint_id = models.AutoField(primary_key=True)
 
+    carbon_footprint = models.IntegerField(blank=False, null=False)
     get_started_section_score = models.IntegerField(blank=False, null=False)
     travel_section_score = models.IntegerField(blank=False, null=False)
     home_section_score = models.IntegerField(blank=False, null=False)
