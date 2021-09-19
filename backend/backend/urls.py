@@ -5,5 +5,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/user/', include('user.urls')),
-    path('api/carbon', include('carbon_footprint.urls'))
+    path('api/carbon-footprint/', include('carbon_footprint.urls'))
 ]
